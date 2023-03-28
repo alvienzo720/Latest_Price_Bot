@@ -2,7 +2,6 @@ import express from 'express'
 import { bot } from './bot'
 
 const app = express()
-
 const startBot = async () => {
     console.log('-------------------------------------------')
     console.log(`starting bot  🤖 `)
