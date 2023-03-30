@@ -30,12 +30,15 @@ export const fetchPrices = async () => {
                 const currentPrice = currentPrices[symbol]
                 const increase = currentPrice - previousPrice
                 const decrease = previousPrice - currentPrice
-                if (increase) {
+                if (increase > 0) {
                     console.log(`${symbol} Price Increased by $${increase}, You can Sell Now!`)
                     sendMessage(`⬆️ ${symbol} Price Increased by $${increase}, You can Sell Now!`)
-                } else if (!increase) {
+                } else if (increase === 0) {
+                    console.log(`${symbol} Price is the same`)
+                    sendMessage(`❇️${symbol}Price is the same`)
+                } else if(increase < 0){
                     console.log(`${symbol} Price Dropped by $${increase} You can Buy Now!`)
-                    sendMessage(`🔻${symbol}Price Dropped by $${increase    } You can Buy Now!`)
+                    sendMessage(`🔻${symbol}Price Dropped by $${increase} You can Buy Now!`)
                 }
             }
         }
