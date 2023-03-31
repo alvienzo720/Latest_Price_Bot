@@ -29,15 +29,15 @@ export const fetchPrices = async () => {
                 const currentPrice = currentPrices[symbol]
                 const increase = currentPrice - previousPrice
                 const decrease = previousPrice - currentPrice
-                if (increase > 5 && symbol === 'BTC') {
+                if (increase >= 5 && symbol === 'BTC') {
                     console.log(`${symbol} Price Increased by $${increase}, You can Sell Now! 🚀 `)
                     sendMessage(`⬆️ ${symbol} Price Increased by $${increase}, You can Sell Now! 🚀 `)
                 }
-                else if (increase > 0.05 && symbol === 'ETH') {
+                else if (increase >= 0.05 && symbol === 'ETH') {
                     console.log(`${symbol} Price Increased by $${increase}, You can Sell Now! 🚀 `)
                     sendMessage(`⬆️ ${symbol} Price Increased by $${increase}, You can Sell Now! 🚀 `)
                 }
-                else if (increase > 0.0027 && symbol === 'BNB') {
+                else if (increase >= 0.0027 && symbol === 'BNB') {
                     console.log(`${symbol} Price Increased by $${increase}, You can Sell Now! 🚀 `)
                     sendMessage(`⬆️ ${symbol} Price Increased by $${increase}, You can Sell Now! 🚀 `)
                 }
