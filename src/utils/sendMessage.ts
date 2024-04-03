@@ -1,11 +1,11 @@
 
 import { bot } from "../bot"
-import { TELEGRAM_DELETE_MESSAGE_INTERVAL, WHITELISTED_USERS } from "../config"
+import { BotParams } from "../config"
 import { normalizeeMessage } from "./normalizeMessage"
 
 const sendMessage = async (message: string, delete_message?: boolean) => {
     try {
-        for (const id of WHITELISTED_USERS) {
+        for (const id of BotParams.WHITELISTED_USERS) {
             await bot?.telegram?.sendMessage(id, normalizeeMessage(message), {
                 parse_mode: "MarkdownV2",
                 disable_web_page_preview: true
@@ -14,7 +14,7 @@ const sendMessage = async (message: string, delete_message?: boolean) => {
                     setTimeout(
                         () => {
                             bot.telegram.deleteMessage(id, message_id),
-                                TELEGRAM_DELETE_MESSAGE_INTERVAL!
+                                BotParams.TELEGRAM_DELETE_MESSAGE_INTERVAL!
                         }
                     )
                 }
